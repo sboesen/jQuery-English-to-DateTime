@@ -1,0 +1,3 @@
+Hi! This mini-project is going to be used in some future apps I work on, and will basically create a DateTime (or better if I find something else later) object based on either things like M/D/Y or basic english (next tuesday at 4:00 PM, today + 5 hours, etc)
+
+Check out NOTES for formats I plan on supporting.

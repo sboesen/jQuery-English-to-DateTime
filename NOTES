@@ -1,0 +1,51 @@
+Formats I care about:
+
+DATE = [
+M/D
+MM/D
+M/DD
+MM/DD
+
+M/D/YY
+MM/D/YY
+M/DD/YY
+MM/DD/YY
+
+M/D/YYYY
+MM/D/YYYY
+M/DD/YYYY
+MM/DD/YYYY
+
+Jan 1
+Jan 1 99
+Jan 1 1999
+]
+
+DOTW = Day of the week (Wednesday etc)
+TIME = [H, H:MM, HH:MM, H PM, H:MM PM, HH:MM PM]
+Non-traditional:
+
+DATE at TIME
+DOTW
+DOTW at TIME
+
+TIME on DOTW
+TIME on DATE
+
+next DOTW
+next DOTW at TIME
+TIME on next DOTW
+
+
+then ALL OF THE ABOVE in addition to a + 1 day etc
+
+
+
+Initially I'll have functions for parsing:
+DATE
+DOTW
+TIME
+
+then I'll add functions to:
+ADD units
+SUBTRACT units
