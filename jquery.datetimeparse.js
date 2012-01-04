@@ -7,7 +7,8 @@
         hours: 0,
         minutes: 0,
         seconds: 0,
-        milliseconds: 0
+        milliseconds: 0,
+        assumeFuture: true //Not 100% perfect... See comment in function ensureInFuture()
       }
 
       var options =  $.extend(defaults, options);
@@ -108,8 +109,27 @@
           inputArray.shift();
           inputArray.shift();
         }
+        else if (input == "tom" || input == "tomorrow") {
+          date = defaultTime(date);
+          console.log(date.getHours())
+          date.setHours(24);
+          console.log(date)
+        }
         
         console.log(" ");
+        if (options.assumeFuture) {
+          console.log("In assume future...")
+          date = ensureInFuture(date);
+        }
+        return date;
+      }
+      function ensureInFuture(date) {
+        //Unfortunately, removing calls to this functions won't eliminate the assumptions that the date in in the future (see DOTW parsing - assumes next DOTW)
+        var now = new Date();
+        while (date < now) {
+          var currentHours = date.getHours();
+          date.setHours(currentHours + 24); //Set to next day while now < date
+        }
         return date;
       }
       function addValue(count, unit, date) {
