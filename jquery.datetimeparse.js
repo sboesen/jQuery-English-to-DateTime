@@ -8,12 +8,12 @@
       }
 
       var options =  $.extend(defaults, options);
-
-      return this.each(function() {
+      var parsedDate;
+      this.each(function() {
         var inputText = $.trim($(this).val()); //no harm...
         console.log("Got input: "+inputText);
         console.log("Is date? "+isDate(inputText));
-        var parsedDate = today();
+        parsedDate = today();
         console.log("Is DOTW? "+dayOfTheWeek(inputText));
         console.log(parsedDate);
       });
