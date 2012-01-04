@@ -8,7 +8,7 @@
         minutes: 0,
         seconds: 0,
         milliseconds: 0,
-        assumeFuture: true //Not 100% perfect... See comment in function ensureInFuture()
+        assumeFuture: false //Not 100% perfect... See comment in function ensureInFuture()
       }
 
       var options =  $.extend(defaults, options);
