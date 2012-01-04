@@ -115,6 +115,12 @@
           date.setHours(24);
           console.log(date)
         }
+        else if (input == "today") {
+          date = defaultTime(new Date());
+        }
+        else if (input == "now") {
+          date = new Date();
+        }
         
         console.log(" ");
         if (options.assumeFuture) {
