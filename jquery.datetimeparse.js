@@ -53,6 +53,27 @@
           return (firstSlash && secondSlash);
         }
       }
+      function isPeriod(period) {
+        var retval = false;
+        switch(period) {
+          case "a": case "am":
+            retval = true;
+            break;
+          case "p": case "pm":
+            retval = true;
+            break;
+        }
+        return retval;
+      }
+      function isTime(time) {
+        //TIME = [H, H:MM, HH:MM]
+        timeComponents = time.split(':');
+        if (time.length < 2 && timeComponents.length == 1) {return true;}
+        timeArray = time.split(':');
+        if (timeArray.length == 2) {return true;}
+        return false;
+        
+      }
       function dayOfTheWeek(dotw) {
         switch(dotw.toLowerCase()) {
           case "mon": case "monday":
