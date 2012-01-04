@@ -1,5 +1,13 @@
 English To DateTime is a plugin that takes (from an input field) both relative dates or dates formatted like M/D/Y and returns a JS Date object corresponding to that date.
 
+#Usage
+Look at test.html and test.js for basic usage with a keyup hook. Basically, do this:
+
+```javascript
+var date = $('input').datetimeparse();
+console.log(date.toString());
+```
+
 #Basic Examples:
 - Monday + 1 week -> Mon Jan 16 2012 00:00:00 GMT-0800 (PST)
 - Monday + 1 day -> Tue Jan 10 2012 00:00:00 GMT-0800 (PST)
