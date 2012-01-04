@@ -16,15 +16,36 @@
       this.each(function() {
         var inputText = $.trim($(this).val()); //no harm...
         console.log("Got input: "+inputText);
-        console.log("Is date? "+isDate(inputText));
-        parsedDate = today();
-        console.log("Is DOTW? "+dayOfTheWeek(inputText));
-        console.log(parsedDate);
+        
+        var inputArray = inputText.split(' ');
+        //inputArray[0] can be... DATE, TIME, DOTW, "next"
+        while (inputArray.length > 0){
+          var parsed = parseInput(inputArray.shift, inputArray);
+          if (parsed != null) {
+            parsedDate = parsed;
+          }
+        }
       });
       if (parsedDate == undefined) {
         return "Something went wrong!";
       }
       return parsedDate;
+      
+      //Helper functions
+      
+      function parseInput(input,inputArray,date) {
+        //Where the magic happens...
+        if (date == undefined) {date = new Date();}
+        if (isDate(input)) {
+          date = new Date(inputArray[0]);
+          date = defaultTime(parsedDate);
+        }
+        else if (isTime(input) && isPeriod(inputArray[0])) {
+          date.setHours(getInputHour(input,inputArray[0]));
+          date.setMinutes(getInputMinute(input));
+        }
+        return date;
+      }
       function getInputMinute(time) {
         timeArray = time.split(':');
         if (timeArray.length < 2) {return 0;}
