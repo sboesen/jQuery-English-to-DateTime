@@ -5,6 +5,10 @@
 
       var defaults = {
         //Option for assuming future set to true or false...
+        hours: 0,
+        minutes: 0,
+        seconds: 0,
+        milliseconds: 0
       }
 
       var options =  $.extend(defaults, options);
