@@ -25,6 +25,22 @@
         return "Something went wrong!";
       }
       return parsedDate;
+      function getInputMinute(time) {
+        timeArray = time.split(':');
+        if (timeArray.length < 2) {return 0;}
+        return timeArray.pop();
+      }
+      function getInputHour(time,period) {
+        if (period.indexOf('a') != -1) {
+          //am... so make sure hours < 11 (11 == 12 PM in setHours)
+          timeArray = time.split(':');
+          var hour = timeArray.shift();
+          if (hour > 11) {
+            return hour - 12;
+          }
+          return hour;
+        }
+      }
       function defaultTime(oldDate) {
         oldDate = typeof(oldDate) != 'undefined' ? oldDate : new Date();
         oldDate.setHours(options.hours);
