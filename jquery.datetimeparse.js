@@ -22,13 +22,13 @@
         console.log(parsedDate);
       });
       return parsedDate;
-      function today() {
-        retVal = new Date();
-        retVal.setHours(0); //Midnight
-        retVal.setMinutes(0);
-        retVal.setSeconds(0);
-        retVal.setMilliseconds(0);
-        return retVal;
+      function defaultTime(oldDate) {
+        oldDate = typeof(oldDate) != 'undefined' ? oldDate : new Date();
+        oldDate.setHours(options.hours);
+        oldDate.setMinutes(options.minutes);
+        oldDate.setSeconds(options.seconds);
+        oldDate.setMilliseconds(options.milliseconds);
+        return oldDate;
       }
       function on(time, date) {
         //on is called when something like this is found: 7 PM on Friday
