@@ -21,6 +21,9 @@
         console.log("Is DOTW? "+dayOfTheWeek(inputText));
         console.log(parsedDate);
       });
+      if (parsedDate == undefined) {
+        return "Something went wrong!";
+      }
       return parsedDate;
       function defaultTime(oldDate) {
         oldDate = typeof(oldDate) != 'undefined' ? oldDate : new Date();
