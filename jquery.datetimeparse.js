@@ -48,6 +48,10 @@
         }
         else {
           //If we're here... Date must include year, so check for two slashes.
+          //Year is either two or four chars...
+          var year = date.split('/').pop();
+          if (year.length != 2 && year.length != 4) {return false;}
+          
           var firstSlash = (date.charAt(1) == '/' || date.charAt(2) == '/');
           var secondSlash = (date.charAt(3) == '/' || date.charAt(4) == '/' || date.charAt(5) == '/');
           return (firstSlash && secondSlash);
