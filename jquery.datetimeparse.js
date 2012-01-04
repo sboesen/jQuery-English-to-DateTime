@@ -33,7 +33,10 @@
       
       function parseInput(input,inputArray,date) {
         //Where the magic happens...
-        if (date == null) {date = new Date();}
+        if (date == null) {
+          date = new Date();
+          date = defaultTime(date);
+        }
         if (isDate(input)) {
           console.log("Is date...");
           date = new Date(inputArray[0]);
@@ -50,7 +53,7 @@
           date.setSeconds(inputSecond);
           inputArray.shift();
         }
-        //Traditional stuff out of the way... Now input must == ("next","at","on",DOTW)
+        //Traditional stuff out of the way... Now input must == ("next","at","on",DOTW, +, -)
         else if (dayOfTheWeek(input) != false) {
           var newDay = dayOfTheWeek(input);
           date = nextDOTW(newDay,date);
@@ -71,8 +74,95 @@
             inputArray.shift();
           }
         }
+        else if (input == "on") {
+          //Expecting inputArray[0] to be DATE or DOTW
+          if (isDate(inputArray[0])) {
+            //Store old non-date stuff...
+            oldHours = date.getHours();
+            oldMinutes = date.getMinutes();
+            oldSeconds = date.getSeconds();
+            oldMilliseconds = date.getMilliseconds();
+            date = new Date(inputArray[0]);
+            date.setHours(oldHours);
+            date.setMinutes(oldMinutes);
+            date.setSeconds(oldSeconds);
+            date.setMilliseconds(oldMilliseconds);
+          }
+          else if (dayOfTheWeek(inputArray[0]) != false) {
+            //DOTW...
+            dotw = dayOfTheWeek(inputArray[0]);
+            nextDOTW(dotw,date);
+          }
+          inputArray.shift();
+        }
+        //input must be + or -...
+        else if (input == "+") {
+          //Expecting inputArray[0] to be like "1" and inputArray[1] to be like "day"
+          addValue(inputArray[0],inputArray[1],date);
+          inputArray.shift();
+          inputArray.shift();
+        }
+        else if (input == "-") {
+          //Expecting inputArray[0] to be like "1" and inputArray[1] to be like "day"
+          subtractValue(inputArray[0],inputArray[1],date);
+          inputArray.shift();
+          inputArray.shift();
+        }
+        
         console.log(" ");
         return date;
+      }
+      function addValue(count, unit, date) {
+        count = parseInt(count);
+        //Unit == second(s), minute(s), hour(s), day(s), week(s), month(s), year(s)
+        switch(unit) {
+          case "second": case "seconds":
+            date.setSeconds(date.getSeconds()+count);
+          break;
+          case "minute": case "minutes":
+            date.setMinutes(date.getMinutes() + count);
+          break;
+          case "hour": case "hours":
+            date.setHours(date.getHours()+count);
+          break;
+          case "day": case "days":
+            date.setHours(date.getHours() + 24*count);
+          break;
+          case "week": case "weeks":
+            date.setHours(date.getHours() + 168*count);
+          break;
+          case "month": case "months":
+            date.setMonth(date.getMonth() + count);
+          break;
+          case "year": case "years":
+            date.setFullYear(date.getFullYear()+count)
+          break;
+        }
+      }
+      function subtractValue(count, unit, date) {
+        switch(unit) {
+          case "second": case "seconds":
+            date.setSeconds(date.getSeconds()-count);
+          break;
+          case "minute": case "minutes":
+            date.setMinutes(date.getMinutes() - count);
+          break;
+          case "hour": case "hours":
+            date.setHours(date.getHours()-count);
+          break;
+          case "day": case "days":
+            date.setHours(date.getHours() - 24*count);
+          break;
+          case "week": case "weeks":
+            date.setHours(date.getHours() - 168*count);
+          break;
+          case "month": case "months":
+            date.setMonth(date.getMonth() - count);
+          break;
+          case "year": case "years":
+            date.setFullYear(date.getFullYear()-count)
+          break;
+        }
       }
       function nextDOTW(day,date) {
         var hours = date.getHours();
