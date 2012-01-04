@@ -13,12 +13,12 @@ English To DateTime is a plugin that takes (from an input field) both relative d
 - MM/D
 - M/DD
 - MM/DD
-- 
+
 - M/D/YY
 - MM/D/YY
 - M/DD/YY
 - MM/DD/YY
-- 
+
 - M/D/YYYY
 - MM/D/YYYY
 - M/DD/YYYY
