@@ -1,4 +1,6 @@
 English To DateTime is a plugin that takes (from an input field) both relative dates or dates formatted like M/D/Y and returns a JS Date object corresponding to that date.
+###Note:
+This plugin will only work on future dates. This is fine for my purposes, but for yours it may not be. I may update it to be more flexible later but do not have plans to do so yet. Feel free to fork and submit a pull request!
 
 #Usage
 Look at test.html and test.js for basic usage with a keyup hook. Basically, do this:
@@ -42,6 +44,10 @@ console.log(date.toString());
 
 ##Addition/Subtraction
 You can also append "+ NUMBER UNIT" to anything above (or nothing at all, in which case it defaults to today at midnight (0:00:00)) and it will add that number of units (where unit is second(s), minute(s), hour(s), day(s), week(s), month(s), year(s)) to that date.
+
+##Keywords
+- tomorrow
+- today
 
 TODO:
 Wording in README
