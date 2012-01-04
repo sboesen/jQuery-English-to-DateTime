@@ -7,7 +7,8 @@ $(document).ready(function() {
     else {
       $('.changeme').text('');
       var parsedDate = $(this).datetimeparse();
-      $('.changeme').text(parsedDate);
+      $('.changeme').text(parsedDate.toString());
+      console.log(parsedDate.toString());
     }
   });
 });
