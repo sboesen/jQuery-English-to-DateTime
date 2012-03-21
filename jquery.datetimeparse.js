@@ -50,13 +50,6 @@
           date.setMinutes(oldMinutes);
           date.setSeconds(oldSeconds);
           date.setMilliseconds(oldMilliseconds);
-
-          // date = new Date(input);
-          // date = defaultTime(parsedDate);
-          console.log("Is date.")
-          console.log(date)
-          console.log(input)
-          console.log("end is date")
           inputArray.shift();
         }
         else if (isTime(input)) {
@@ -276,7 +269,6 @@
           
           var firstSlash = (date.charAt(1) == '/' || date.charAt(2) == '/');
           var secondSlash = (date.charAt(3) == '/' || date.charAt(4) == '/' || date.charAt(5) == '/');
-          console.log("FirstSlash: "+firstSlash + "Second slash: "+secondSlash)
           return (firstSlash && secondSlash);
         }
       }
