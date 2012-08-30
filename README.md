@@ -1,3 +1,6 @@
+#UPDATE:
+This was mainly a side project for me that spawned out of a need for the basic english -> date functionality. Some people have been working on a very similar library, and it seems to have just gotten popular. Please use it instead! It seems ot have many more features, as well: http://momentjs.com/
+
 English To DateTime is a plugin that takes (from an input field) both relative dates or dates formatted like M/D/Y and returns a JS Date object corresponding to that date.
 ###Note:
 This plugin will only work on future dates. This is fine for my purposes, but for yours it may not be. I may update it to be more flexible later but do not have plans to do so yet. Feel free to fork and submit a pull request!
